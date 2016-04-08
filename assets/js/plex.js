@@ -195,34 +195,34 @@ var PLEX = {
 		PLEX._director_list_section.show();
 
 	},
-	
+
 	display_seen_list: function(seen) {
 		if (PLEX.current_section.type != "movie") {
 			PLEX._seen_list_section.hide();
 			return;
 		};
-		
+
 		var list_html = '<li data-seen="all"><em>'+PLEX.current_section.num_items+'</em>All</li>';
-		
+
 		seen_count = 0;
 		$.each(PLEX.filter_items_by_seen(PLEX.current_section.items, "true"), function (k, v) {
 			seen_count++;
 		});
-		
+
 		list_html += '<li data-seen="true"><em>'+seen_count+'</em>Seen</li>';
-		
+
 		unseen_count = 0;
 		$.each(PLEX.filter_items_by_seen(PLEX.current_section.items, "false"), function (k, v) {
 			unseen_count++;
 		});
-		
+
 		list_html += '<li data-seen="false"><em>'+unseen_count+'</em>Not Seen</li>';
-		
+
 		PLEX._seen_list.html(list_html);
-		
+
 		$("li", PLEX._seen_list).removeClass("current");
 		$("li[data-seen="+PLEX.current_seen+"]").addClass("current");
-		
+
 		PLEX._seen_list_section.show();
 	},
 
@@ -230,7 +230,7 @@ var PLEX = {
 	display_items: function(items) {
 
 		var items = PLEX.current_section.items
-		
+
 		if (PLEX.current_seen != "all") {
 			items = PLEX.filter_items_by_seen(items, PLEX.current_seen);
 		};
@@ -306,7 +306,7 @@ var PLEX = {
 		});
 		return items_to_show;
 	}, // end func: filter_items_by_director
-	
+
 	filter_items_by_seen: function(all_items, seen) {
 		if(seen == "all") return all_items;
 		var items_to_show = {};
@@ -359,7 +359,7 @@ var PLEX = {
 		PLEX.current_director = director;
 		PLEX.display_section(PLEX.current_section.key);
 	}, // end func: change_director
-	
+
 	change_seen: function(seen) {
 		if(typeof seen == "undefined" || seen == PLEX.current_seen) return;
 		PLEX.current_seen = seen;
@@ -520,7 +520,7 @@ var PLEX = {
 	run: function() {
 
 		if(!PLEX.data_loaded) {
-			$.get("plex-data/data.js", function(data){
+			$.get("../data.js", function(data){
 				eval(data); // unpack
 				PLEX.load_data(raw_plex_data);
 				return PLEX.run();
@@ -565,7 +565,7 @@ var PLEX = {
 		$("li", PLEX._director_list).live("click", function(){
 			PLEX.change_director($(this).attr('data-director'));
 		});
-		
+
 		$("li", PLEX._seen_list).live("click", function(){
 			PLEX.change_seen($(this).attr('data-seen'));
 		});
