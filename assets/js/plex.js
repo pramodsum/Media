@@ -254,7 +254,7 @@ var PLEX = {
 			if(typeof items[key] == "undefined") return;
 			var item = items[key];
 			var thumb = (item.thumb==false)?"assets/images/default.png":item.thumb;
-			html_string += '<li data-item="'+item.key+'" class="item"><img src="plex-data/'+thumb+'" width="150" /><h4>'+item.title+'</h4></li>';
+			html_string += '<li data-item="'+item.key+'" class="item"><img src="assets/images/plex-data/'+thumb+'" width="150" /><h4>'+item.title+'</h4></li>';
 			num_items++;
 		});
 		PLEX._item_list.html(html_string);
