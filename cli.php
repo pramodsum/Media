@@ -24,12 +24,12 @@ error_reporting(E_ALL ^ E_NOTICE | E_WARNING);
 	plex_log('Welcome to the Plex Exporter v'.$plex_export_version);
 	$defaults = array(
 		'plex-url' => 'http://localhost:32400',
-		'data-dir' => 'plex-data',
+		'data-dir' => '.',
 		'thumbnail-width' => 150,
 		'thumbnail-height' => 250,
 		'sections' => 'all',
 		'sort-skip-words' => 'a,the,der,die,das',
-		'token' => ''
+		'token' => '15e8555babb93a610eaf3e28282bc54b9b424119'
 	);
 	$options = hl_parse_arguments($_SERVER['argv'], $defaults);
 	if(substr($options['plex-url'],-1)!='/') $options['plex-url'] .= '/'; // Always have a trailing slash
