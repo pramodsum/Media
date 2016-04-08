@@ -254,7 +254,7 @@ var PLEX = {
 			if(typeof items[key] == "undefined") return;
 			var item = items[key];
 			var thumb = (item.thumb==false)?"assets/images/default.png":item.thumb;
-			html_string += '<li data-item="'+item.key+'" class="item"><img src="'+thumb+'" width="150" /><h4>'+item.title+'</h4></li>';
+			html_string += '<li data-item="'+item.key+'" class="item"><img src="plex-data/'+thumb+'" width="150" /><h4>'+item.title+'</h4></li>';
 			num_items++;
 		});
 		PLEX._item_list.html(html_string);
@@ -520,7 +520,7 @@ var PLEX = {
 	run: function() {
 
 		if(!PLEX.data_loaded) {
-			$.get("./data.js", function(data){
+			$.get("data.js", function(data){
 				eval(data); // unpack
 				PLEX.load_data(raw_plex_data);
 				return PLEX.run();
