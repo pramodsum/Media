@@ -35,7 +35,7 @@ var PLEX = {
 		var section_list_html = '';
 		$.each(PLEX.section_display_order, function(i,key){
 			var section = PLEX.sections[key];
-			section_list_html += '<li data-section="'+section.key+'" class="'+section.type+'"><em>'+number_format(section.num_items)+'</em><span>'+section.title+'</span></li>';
+			section_list_html += '<li data-section="'+section.key+'" class="'+section.type+'"><em>'+parseInt(section.num_items)+'</em><span>'+section.title+'</span></li>';
 		});
 		PLEX._sections_list.html(section_list_html);
 	}, // end func: display_sections_list
@@ -254,7 +254,7 @@ var PLEX = {
 			if(typeof items[key] == "undefined") return;
 			var item = items[key];
 			var thumb = (item.thumb==false)?"assets/images/default.png":item.thumb;
-			html_string += '<li data-item="'+item.key+'" class="item"><img src="https://raw.githubusercontent.com/pramodsum/Media/gh-pages/assets'+thumb+'" width="150" /><h4>'+item.title+'</h4></li>';
+			html_string += '<div data-item="'+item.key+'" class="item grid-item"><img class="u-max-full-width" src="https://raw.githubusercontent.com/pramodsum/Media/gh-pages/assets'+thumb+'" /><h6>'+item.title+'</h6></div>';
 			num_items++;
 		});
 		PLEX._item_list.html(html_string);
@@ -264,7 +264,7 @@ var PLEX = {
 			PLEX._item_list_status.html("<p>There are no items to display in this collection.</p>").show();
 		} else {
 			PLEX._item_list_status.hide();
-			PLEX._section_meta.text(number_format(num_items)+" "+inflect(num_items,"item")+" in this collection");
+			PLEX._section_meta.text(parseInt(num_items)+" "+inflect(num_items,"item")+" in this collection");
 		}
 
 		$(document).trigger("scroll");
@@ -542,11 +542,11 @@ var PLEX = {
 		PLEX._section_meta = $("#section-header p");
 		PLEX._section_filter = $("#section-header input");
 		PLEX._item_list_status = $("#item-list-status");
-		PLEX._item_list = $("#item-list ul");
+		PLEX._item_list = $("#item-list");
 		PLEX._popup_overlay = $("#popup-overlay");
 		PLEX._popup_container = $("#popup-container");
 
-		PLEX._total_items.text(number_format(PLEX.total_items));
+		PLEX._total_items.text(parseInt(PLEX.total_items));
 		PLEX._last_updated.text(PLEX.last_updated);
 		PLEX.display_sections_list();
 
