@@ -254,7 +254,7 @@ var PLEX = {
 			if(typeof items[key] == "undefined") return;
 			var item = items[key];
 			var thumb = (item.thumb==false)?"assets/images/default.png":item.thumb;
-			html_string += '<div data-item="'+item.key+'" class="item grid-item"><img class="u-max-full-width" src="https://raw.githubusercontent.com/pramodsum/Media/gh-pages/plex-data'+thumb+'" /><h6>'+item.title+'</h6></div>';
+			html_string += '<div data-item="'+item.key+'" class="item grid-item"><img class="u-max-full-width" src="https://raw.githubusercontent.com/pramodsum/media/gh-pages'+thumb+'" /><h6>'+item.title+'</h6></div>';
 			num_items++;
 		});
 		PLEX._item_list.html(html_string);
