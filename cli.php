@@ -29,7 +29,7 @@ error_reporting(E_ALL ^ E_NOTICE | E_WARNING);
 		'thumbnail-height' => 250,
 		'sections' => 'all',
 		'sort-skip-words' => 'a,the,der,die,das',
-		'token' => '15e8555babb93a610eaf3e28282bc54b9b424119'
+		'token' => 'sMur3Munbf1c8xAnEAmq'
 	);
 	$options = hl_parse_arguments($_SERVER['argv'], $defaults);
 	if(substr($options['plex-url'],-1)!='/') $options['plex-url'] .= '/'; // Always have a trailing slash
